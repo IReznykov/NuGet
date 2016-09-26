@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>IReznykov</owners>
+    <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
+    <projectUrl>https://github.com/IReznykov/NuGet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial release. Library contains LiteObjectService and TypeExtensions.</releaseNotes>
+    <copyright>Copyright ©2016 Illya Reznykov</copyright>
+    <tags>reflection typebuilder defaultvalue serialize</tags>
+  </metadata>
+</package>
