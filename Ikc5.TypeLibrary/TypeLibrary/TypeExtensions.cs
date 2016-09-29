@@ -58,6 +58,7 @@ namespace Ikc5.TypeLibrary
 		/// <summary>
 		/// Returns default value for property from DefaultValue attributes 
 		/// or null if it is not defined.
+		/// From MSDN: Call TypeDescriptor.GetProperties(Type) only if you haven't instance of the object.
 		/// </summary>
 		/// <param name="thisObjectType">Object that is investigated.</param>
 		/// <param name="value">Returned default value.</param>
@@ -91,6 +92,48 @@ namespace Ikc5.TypeLibrary
 			value = defaultValue;
 			var propertyCollection = TypeDescriptor.GetProperties(thisObject);
 			return GetDefaultValueBase(propertyCollection, ref value, propertyName);
+		}
+
+		/// <summary>
+		/// Set default value for property from DefaultValue attributes 
+		/// or do nothing if the attribute is not defined.
+		/// </summary>
+		/// <param name="thisObject">Object that is investigated.</param>
+		/// <param name="propertyName">Property name, could be omitted.</param>
+		/// <returns></returns>
+		public static bool SetDefaultValue<T>(this object thisObject, string propertyName)
+		{
+			if (thisObject == null || string.IsNullOrEmpty(propertyName))
+				return false;
+
+			var propertyCollection = TypeDescriptor.GetProperties(thisObject);
+			var property = propertyCollection[propertyName];
+			var attribute = (DefaultValueAttribute)property?.Attributes[typeof(DefaultValueAttribute)];
+			if (attribute?.Value == null)
+				return false;
+
+			property.SetValue(thisObject, System.Convert.ChangeType(attribute.Value, typeof(T)));
+			return true;
+		}
+
+		/// <summary>
+		/// Set default values to those properties that has DefaultValue attribute.
+		/// </summary>
+		/// <param name="thisObject">Object that is investigated.</param>
+		public static void SetDefaultValues(this object thisObject)
+		{
+			if (thisObject == null)
+				return;
+
+			var properties = TypeDescriptor.GetProperties(thisObject.GetType());
+			foreach (PropertyDescriptor property in properties)
+			{
+				var attribute = (DefaultValueAttribute)property?.Attributes[typeof(DefaultValueAttribute)];
+				if (attribute == null)
+					continue;
+
+				property.SetValue(thisObject, attribute.Value);
+			}
 		}
 
 		/// <summary>
