@@ -29,10 +29,8 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.0.2")]
-[assembly: AssemblyFileVersion("1.0.0.2")]
+[assembly: AssemblyVersion("1.0.0.3")]
+[assembly: AssemblyFileVersion("1.0.0.3")]
 
-#if DEBUG
 // Test library
-[assembly: InternalsVisibleTo("Ikc5.TypeLibrary.Tests")]
-#endif
+[assembly: InternalsVisibleTo("TypeLibrary.Tests")]

@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/IReznykov/NuGet</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial release. Library contains LiteObjectService and TypeExtensions.</releaseNotes>
+    <releaseNotes>Add SetDefaultValue and SetDefaultValues methods. Add post with examples https://ireznykov.com/2016/10/08/examples-of-using-ikc5-typelibrary/</releaseNotes>
     <copyright>Copyright ©2016 Illya Reznykov</copyright>
     <tags>reflection typebuilder defaultvalue serialize</tags>
   </metadata>
