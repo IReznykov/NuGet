@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Ikc5.Prism.Settings.Module</id>
+    <version>1.0.0.0</version>
+    <title>Ikc5.Prism.Settings</title>
+    <authors>Illya Reznykov</authors>
+    <owners>IReznykov</owners>
+    <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
+    <projectUrl>https://github.com/IReznykov/NuGet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Library contains classes to manipulate user settings in Prism applications and serialize/deserialize them in xml files. This package is intended to be used in WPF Prism module.</description>
+    <releaseNotes>Initial release, contains three NuGet packages.</releaseNotes>
+    <copyright>Copyright ©2016 Illya Reznykov</copyright>
+    <tags>prism xml serialize settings</tags>
+    <dependencies>
+      <dependency id="Ikc5.TypeLibrary" version="1.0.0.3" />
+      <dependency id="Prism.Core" version="6.2.0" />
+       <dependency id="Prism.Wpf" version="6.2.0" />
+       <dependency id="Prism.Unity" version="6.2.0" />
+   </dependencies>
+  </metadata>
+</package>

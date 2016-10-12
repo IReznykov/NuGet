@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$.Library</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>IReznykov</owners>
+    <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
+    <projectUrl>https://github.com/IReznykov/NuGet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$ This package is intended to be used in shared or common libraries. Developer could add or extend classes in package.</description>
+    <releaseNotes>Initial release, contains three NuGet packages.</releaseNotes>
+    <copyright>Copyright ©2016 Illya Reznykov</copyright>
+    <tags>prism xml serialize settings</tags>
+    <dependencies>
+      <dependency id="Ikc5.TypeLibrary" version="1.0.0.3" />
+      <dependency id="Prism.Core" version="6.2.0" />
+    </dependencies>
+  </metadata>
+</package>
