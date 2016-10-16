@@ -1,2 +1,2 @@
 # NuGet
-Source code for NuGet packages. For description, see https://ireznykov.wordpress.com/tag/nuget/
+Source code for NuGet packages. For description, see https://ireznykov.com/tag/nuget/

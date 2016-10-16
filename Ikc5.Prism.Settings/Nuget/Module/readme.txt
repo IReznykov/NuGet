@@ -20,7 +20,7 @@ public class $ProjectName$Module : IModule
 
 	private void ConfigureContainer()
 	{
-		_container.RegisterType<ISettings, Models.Settings>(new ContainerControlledLifetimeManager());
+		_container.RegisterType<ISettings, Settings>(new ContainerControlledLifetimeManager());
 	}
 
 	public void Initialize()
