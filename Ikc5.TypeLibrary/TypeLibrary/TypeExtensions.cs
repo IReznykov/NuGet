@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace Ikc5.TypeLibrary
 {
@@ -17,20 +18,77 @@ namespace Ikc5.TypeLibrary
 		/// </summary>
 		/// <param name="thisObject">Object that is investigated.</param>
 		/// <param name="propertyName">Property name, could be omitted.</param>
+		/// <param name="returnOnNullAttribute">Method returns if attribute is null.</param>
+		/// <param name="getAttributeValue">Function that gives value of default attribute.</param>
 		/// <returns>TRUE if property value is set.</returns>
-		public static bool SetDefaultValue<T>(this object thisObject, string propertyName)
+		private static bool SetDefaultValueBase(
+			object thisObject,
+			string propertyName,
+			bool returnOnNullAttribute,
+			Func<DefaultValueAttribute, object> getAttributeValue)
 		{
 			if (thisObject == null || string.IsNullOrEmpty(propertyName))
 				return false;
 
 			var propertyCollection = TypeDescriptor.GetProperties(thisObject);
 			var property = propertyCollection[propertyName];
-			var attribute = (DefaultValueAttribute)property?.Attributes[typeof(DefaultValueAttribute)];
-			if (attribute?.Value == null)
+			if (property == null)
+				return false;
+			return SetDefaultValueToProperty(thisObject, property, returnOnNullAttribute, getAttributeValue);
+		}
+
+		/// <summary>
+		/// Set value to the property from DefaultValue attribute
+		/// or do nothing if the attribute is not defined.
+		/// </summary>
+		/// <param name="thisObject">Object that is investigated.</param>
+		/// <param name="property">Object describes mentioned property.</param>
+		/// <param name="returnOnNullAttribute">Method returns if attribute is null.</param>
+		/// <param name="getAttributeValue">Function that gives value of default attribute.</param>
+		/// <returns>TRUE if property value is set.</returns>
+		private static bool SetDefaultValueToProperty(
+			object thisObject,
+			PropertyDescriptor property,
+			bool returnOnNullAttribute,
+			Func<DefaultValueAttribute, object> getAttributeValue)
+		{
+			if (thisObject == null || property == null)
+				return false;
+			var attribute = (DefaultValueAttribute)property.Attributes[typeof(DefaultValueAttribute)];
+			if (attribute == null && returnOnNullAttribute)
 				return false;
 
-			property.SetValue(thisObject, Convert.ChangeType(attribute.Value, typeof(T)));
+			// attribute.Value could has correct value 'null'
+			var newValue = getAttributeValue(attribute);
+			if (!property.IsReadOnly)
+			{
+				property.SetValue(thisObject, newValue);
+			}
+			else
+			{
+				var propertyInfo = thisObject.GetType().
+						GetProperty(property.Name, BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic);
+				if (propertyInfo == null)
+					return false;
+				propertyInfo.SetValue(thisObject, newValue);
+			}
 			return true;
+		}
+
+		/// <summary>
+		/// Set value to the property from DefaultValue attribute
+		/// or do nothing if the attribute is not defined.
+		/// </summary>
+		/// <param name="thisObject">Object that is investigated.</param>
+		/// <param name="propertyName">Property name, could be omitted.</param>
+		/// <returns>TRUE if property value is set.</returns>
+		public static bool SetDefaultValue(this object thisObject, [CallerMemberName]string propertyName = null)
+		{
+			return SetDefaultValueBase(
+				thisObject,
+				propertyName,
+				true,
+				attribute => attribute.Value);
 		}
 
 		/// <summary>
@@ -43,20 +101,11 @@ namespace Ikc5.TypeLibrary
 		/// <returns>TRUE if property value is set.</returns>
 		public static bool SetDefaultValue<T>(this object thisObject, T defaultValue, string propertyName)
 		{
-			if (thisObject == null || string.IsNullOrEmpty(propertyName))
-				return false;
-
-			var propertyCollection = TypeDescriptor.GetProperties(thisObject);
-			var property = propertyCollection[propertyName];
-			if (property == null)
-				return false;
-			var attribute = (DefaultValueAttribute)property.Attributes[typeof(DefaultValueAttribute)];
-			if (attribute?.Value == null)
-				property.SetValue(thisObject, defaultValue);
-			else
-				property.SetValue(thisObject, Convert.ChangeType(attribute.Value, typeof(T)));
-
-			return true;
+			return SetDefaultValueBase(
+				thisObject,
+				propertyName,
+				false,
+				attribute => (attribute == null ? defaultValue : (attribute.Value == null ? null : Convert.ChangeType(attribute.Value, typeof(T)))));
 		}
 
 		/// <summary>
@@ -71,11 +120,7 @@ namespace Ikc5.TypeLibrary
 			var properties = TypeDescriptor.GetProperties(thisObject);
 			foreach (PropertyDescriptor property in properties)
 			{
-				var attribute = (DefaultValueAttribute)property?.Attributes[typeof(DefaultValueAttribute)];
-				if (attribute == null)
-					continue;
-
-				property.SetValue(thisObject, attribute.Value);
+				SetDefaultValueToProperty(thisObject, property, true, attribute => attribute.Value);
 			}
 		}
 
@@ -85,10 +130,11 @@ namespace Ikc5.TypeLibrary
 		{
 			var property = propertyCollection[propertyName];
 			var attribute = (DefaultValueAttribute)property?.Attributes[typeof(DefaultValueAttribute)];
-			if (attribute?.Value == null)
+			if (attribute == null)
 				return false;
 
-			value = (T)System.Convert.ChangeType(attribute.Value, typeof(T));
+			// attribute.Value could has correct value 'null'
+			value = attribute.Value == null ? default(T) : (T)Convert.ChangeType(attribute.Value, typeof(T));
 			return true;
 		}
 
@@ -252,7 +298,7 @@ namespace Ikc5.TypeLibrary
 		{
 			if (thisObject == null)
 			{
-				throw new ArgumentNullException(paramName, message);
+				throw new ArgumentNullException(paramName, message ?? "Value cannot be null.");
 			}
 		}
 	}

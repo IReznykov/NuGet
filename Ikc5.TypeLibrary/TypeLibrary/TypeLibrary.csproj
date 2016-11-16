@@ -45,9 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseNotifyPropertyChanged.cs" />
+    <Compile Include="EnumDescriptionTypeConverter.cs" />
     <Compile Include="ILiteObjectService.cs" />
     <Compile Include="LiteObjectBase.cs" />
     <Compile Include="LiteObjectService.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\Priority.cs" />
+    <Compile Include="Logging\Category.cs" />
+    <Compile Include="Logging\ITimestampLogger.cs" />
+    <Compile Include="Logging\LogExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TypeExtensions.cs" />
   </ItemGroup>

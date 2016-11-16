@@ -7,10 +7,13 @@
     <authors>$author$</authors>
     <owners>IReznykov</owners>
     <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
-    <projectUrl>https://github.com/IReznykov/NuGet</projectUrl>
+    <projectUrl>https://github.com/IReznykov/NuGet/tree/master/Ikc5.TypeLibrary</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Add SetDefaultValue and SetDefaultValues methods. Add post with examples https://ireznykov.com/2016/10/08/examples-of-using-ikc5-typelibrary/</releaseNotes>
+    <releaseNotes>
+Add base class for INotifyPropertyChanged interface, add logging interfaces and extensions methods.
+Change message in ThrowIfNull method - instead of "Exception of type 'System.ArgumentNullException' was thrown.\r\nParameter name:" it starts with "Value cannot be null."
+Update and fix SetDefaultValue methods, it has two main overloads - with and without defaultValue, and could set values to properties with protected and private set accessors.</releaseNotes>
     <copyright>Copyright ©2016 Illya Reznykov</copyright>
     <tags>reflection typebuilder defaultvalue serialize</tags>
   </metadata>

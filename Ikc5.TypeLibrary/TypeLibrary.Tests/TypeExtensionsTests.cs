@@ -20,7 +20,6 @@ namespace Ikc5.TypeLibrary.Tests
 			testObject.Count.Should().Be(new int());
 		}
 
-
 		[Fact]
 		public void GetDefaultValueObject_ShouldKeepValues_WithoutDefaultAttributes()
 		{
@@ -80,6 +79,111 @@ namespace Ikc5.TypeLibrary.Tests
 			testObject.Should().NotBeNull();
 			testObject.Name.Should().Be("Default");
 			testObject.Count.Should().Be(100);
+		}
+
+		[Fact]
+		public void SetDefaultValue_ShouldAssign_NullableProperty()
+		{
+			var testObject = new DefaultsObject4();
+			testObject.Should().NotBeNull();
+			testObject.State.Should().BeFalse();
+
+			bool? result = null;
+			var exception = Record.Exception(() => result = testObject.SetDefaultValue(nameof(DefaultsObject4.State)));
+
+			exception.Should().BeNull();
+			result.Should().BeTrue();
+			testObject.State.Should().NotHaveValue();
+		}
+
+		[Fact]
+		public void SetDefaultValue_ShouldAssign_NameToDefault()
+		{
+			var testObject = new DefaultsObject4();
+			testObject.Should().NotBeNull();
+			testObject.Name.Should().Be("Simple");
+
+			bool? result = null;
+			var exception = Record.Exception(() => result = testObject.SetDefaultValue(nameof(DefaultsObject4.Name)));
+
+			exception.Should().BeNull();
+			result.Should().BeTrue();
+			testObject.Name.Should().Be("Default");
+		}
+
+		[Fact]
+		public void SetDefaultValue_ShouldKeep_NameWithoutDefault()
+		{
+			var testObject = new DefaultsObject4();
+			testObject.Should().NotBeNull();
+			testObject.NameWithoutDefault.Should().Be("Name");
+
+			bool? result = null;
+			var exception = Record.Exception(() => result = testObject.SetDefaultValue(nameof(DefaultsObject4.NameWithoutDefault)));
+
+			exception.Should().BeNull();
+			result.Should().BeFalse();
+			testObject.NameWithoutDefault.Should().Be("Name");
+		}
+
+		[Fact]
+		public void SetDefaultValue_ShouldAssign_CountToDefault()
+		{
+			var testObject = new DefaultsObject4();
+			testObject.Should().NotBeNull();
+			testObject.Count.Should().Be(0);
+
+			bool? result = null;
+			var exception = Record.Exception(() => result = testObject.SetDefaultValue(nameof(DefaultsObject4.Count)));
+
+			exception.Should().BeNull();
+			result.Should().BeTrue();
+			testObject.Count.Should().Be(100);
+		}
+
+		[Fact]
+		public void SetDefaultValue_ShouldAssign_ProtectedCountToDefault()
+		{
+			var testObject = new DefaultsObject4();
+			testObject.Should().NotBeNull();
+			testObject.ProtectedCount.Should().Be(0);
+
+			bool? result = null;
+			var exception = Record.Exception(() => result = testObject.SetDefaultValue(nameof(DefaultsObject4.ProtectedCount)));
+
+			exception.Should().BeNull();
+			result.Should().BeTrue();
+			testObject.ProtectedCount.Should().Be(200);
+		}
+
+		[Fact]
+		public void SetDefaultValue_ShouldAssign_PrivateCountToDefault()
+		{
+			var testObject = new DefaultsObject4();
+			testObject.Should().NotBeNull();
+			testObject.PrivateCount.Should().Be(0);
+
+			bool? result = null;
+			var exception = Record.Exception(() => result = testObject.SetDefaultValue(nameof(DefaultsObject4.PrivateCount)));
+
+			exception.Should().BeNull();
+			result.Should().BeTrue();
+			testObject.PrivateCount.Should().Be(300);
+		}
+
+		[Fact]
+		public void SetDefaultValue_ShouldKeep_CountWithoutDefault()
+		{
+			var testObject = new DefaultsObject4();
+			testObject.Should().NotBeNull();
+			testObject.CountWithoutDefault.Should().Be(25);
+
+			bool? result = null;
+			var exception = Record.Exception(() => result = testObject.SetDefaultValue(nameof(DefaultsObject4.CountWithoutDefault)));
+
+			exception.Should().BeNull();
+			result.Should().BeFalse();
+			testObject.CountWithoutDefault.Should().Be(25);
 		}
 
 		[Fact]
@@ -160,8 +264,8 @@ namespace Ikc5.TypeLibrary.Tests
 		{
 			public SimpleObject1()
 			{
-				this.SetDefaultValue<string>(nameof(Name));
-				this.SetDefaultValue<int>(nameof(Count));
+				this.SetDefaultValue(nameof(Name));
+				this.SetDefaultValue(nameof(Count));
 			}
 
 			public string Name { get; set; } = "Simple";
@@ -227,9 +331,9 @@ namespace Ikc5.TypeLibrary.Tests
 			public DefaultsObject1()
 			{
 				// set value of Name property to default value, "Default"
-				this.SetDefaultValue<string>(nameof(Name));
+				this.SetDefaultValue(nameof(Name));
 				// set value of Count property to default value, 100
-				this.SetDefaultValue<int>(nameof(Count));
+				this.SetDefaultValue(nameof(Count));
 			}
 
 			[DefaultValue("Default")]
@@ -295,6 +399,28 @@ namespace Ikc5.TypeLibrary.Tests
 				get { return _count; }
 				set { _count = value; }
 			}
+		}
+
+		private class DefaultsObject4
+		{
+			[DefaultValue(null)]
+			public bool? State { get; set; } = false;
+
+			[DefaultValue("Default")]
+			public string Name { get; set; } = "Simple";
+
+			public string NameWithoutDefault { get; set; } = "Name";
+
+			[DefaultValue(100)]
+			public int Count { get; set; }
+
+			[DefaultValue(200)]
+			public int ProtectedCount { get; protected set; }
+
+			[DefaultValue(300)]
+			public int PrivateCount { get; private set; }
+
+			public int CountWithoutDefault { get; set; } = 25;
 		}
 
 		private class PropertyObject1
