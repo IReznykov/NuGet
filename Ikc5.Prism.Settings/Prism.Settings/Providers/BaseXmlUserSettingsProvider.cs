@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Xml.Serialization;
-using Ikc5.Prism.Settings.Logging;
+using Ikc5.Prism.Common.Logging;
 using Ikc5.TypeLibrary;
 using Prism.Logging;
 

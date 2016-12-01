@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Ikc5.Prism.Settings.Logging;
+using Ikc5.Prism.Common.Logging;
 using Ikc5.TypeLibrary;
 using Prism.Logging;
 
@@ -27,7 +27,7 @@ namespace Ikc5.Prism.Settings.Providers
 		/// Serialize user setting to file in isolated storage.
 		/// </summary>
 		/// <param name="userSettings"></param>
-		public void Serialize(IUserSettings userSettings)
+		public virtual void Serialize(IUserSettings userSettings)
 		{
 			Logger?.Log($"Serialize settings in Xml, Type = {userSettings?.GetType().FullName ?? "null"}, Folder = {FolderName ?? "null"}, FileName = {FileName ?? "null"}");
 
@@ -54,7 +54,7 @@ namespace Ikc5.Prism.Settings.Providers
 		/// If file is not found, do nothing.
 		/// </summary>
 		/// <param name="userSettings"></param>
-		public void Deserialize(IUserSettings userSettings)
+		public virtual void Deserialize(IUserSettings userSettings)
 		{
 			Logger?.Log($"Deserialize settings in Xml, Type = {userSettings?.GetType().FullName ?? "null"}, Folder = {FolderName ?? "null"}, FileName = {FileName ?? "null"}");
 

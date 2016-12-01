@@ -7,14 +7,15 @@
     <authors>$author$</authors>
     <owners>IReznykov</owners>
     <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
-    <projectUrl>https://github.com/IReznykov/NuGet</projectUrl>
+    <projectUrl>https://github.com/IReznykov/NuGet/tree/master/Ikc5.Prism.Settings</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$ This package is intended to be used in shared or common libraries. Developer could add or extend classes in package.</description>
-    <releaseNotes>Initial release, contains three NuGet packages.</releaseNotes>
+    <releaseNotes>Add references to updated Ikc5.TypeLibrary and Ikc5.Prism.Common, remove Logging, add storage provider for Roaming AppData.</releaseNotes>
     <copyright>Copyright ©2016 Illya Reznykov</copyright>
     <tags>prism xml serialize settings</tags>
     <dependencies>
-      <dependency id="Ikc5.TypeLibrary" version="1.0.0.3" />
+      <dependency id="Ikc5.TypeLibrary" version="1.0.0.8" />
+      <dependency id="Ikc5.Prism.Common" version="1.0.0.0" />
       <dependency id="Prism.Core" version="6.2.0" />
     </dependencies>
   </metadata>

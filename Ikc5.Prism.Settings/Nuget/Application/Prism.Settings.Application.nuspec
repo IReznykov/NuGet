@@ -2,19 +2,20 @@
 <package >
   <metadata>
     <id>Ikc5.Prism.Settings.Application</id>
-    <version>1.0.0.0</version>
+    <version>1.0.0.1</version>
     <title>Ikc5.Prism.Settings</title>
     <authors>Illya Reznykov</authors>
     <owners>IReznykov</owners>
     <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
-    <projectUrl>https://github.com/IReznykov/NuGet</projectUrl>
+    <projectUrl>https://github.com/IReznykov/NuGet/tree/master/Ikc5.Prism.Settings</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Library contains classes to manipulate user settings in Prism applications and serialize/deserialize them in xml files. This package is intended to be used in WPF Prism application.</description>
-    <releaseNotes>Initial release, contains three NuGet packages.</releaseNotes>
+    <releaseNotes>Add references to updated Ikc5.TypeLibrary and Ikc5.Prism.Common, remove Logging, add storage provider for Roaming AppData.</releaseNotes>
     <copyright>Copyright ©2016 Illya Reznykov</copyright>
     <tags>prism xml serialize settings</tags>
     <dependencies>
-      <dependency id="Ikc5.TypeLibrary" version="1.0.0.3" />
+      <dependency id="Ikc5.TypeLibrary" version="1.0.0.8" />
+      <dependency id="Ikc5.Prism.Common" version="1.0.0.0" />
       <dependency id="Prism.Core" version="6.2.0" />
       <dependency id="Prism.Wpf" version="6.2.0" />
       <dependency id="Prism.Unity" version="6.2.0" />

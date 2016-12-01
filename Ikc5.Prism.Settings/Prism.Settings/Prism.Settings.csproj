@@ -35,8 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ikc5.TypeLibrary, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ikc5.TypeLibrary.1.0.0.3\lib\net451\Ikc5.TypeLibrary.dll</HintPath>
+    <Reference Include="Ikc5.Prism.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ikc5.Prism.Common.1.0.0\lib\net451\Ikc5.Prism.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ikc5.TypeLibrary, Version=1.0.0.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ikc5.TypeLibrary.1.0.0.8\lib\net451\Ikc5.TypeLibrary.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Prism, Version=6.2.0.0, Culture=neutral, PublicKeyToken=91a96d2a154366d8, processorArchitecture=MSIL">
@@ -54,12 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Providers\PersonalXmlUserSettingsProvider.cs" />
     <Compile Include="Providers\LocalXmlUserSettingsProvider.cs" />
     <Compile Include="IUserSettings.cs" />
     <Compile Include="IUserSettingsProvider.cs" />
     <Compile Include="IUserSettingsService.cs" />
-    <Compile Include="Logging\ILoggerTimeFacade.cs" />
-    <Compile Include="Logging\LogExtensions.cs" />
     <Compile Include="Providers\BaseXmlUserSettingsProvider.cs" />
     <Compile Include="Providers\IsolatedXmlUserSettingsProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,7 +73,9 @@
     <Compile Include="ViewModels\UserSettingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
