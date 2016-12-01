@@ -82,6 +82,22 @@ namespace Ikc5.TypeLibrary
 		/// <param name="thisObject">Object that is investigated.</param>
 		/// <param name="propertyName">Property name, could be omitted.</param>
 		/// <returns>TRUE if property value is set.</returns>
+		public static bool SetDefaultValue<T>(this object thisObject, [CallerMemberName]string propertyName = null)
+		{
+			return SetDefaultValueBase(
+				thisObject,
+				propertyName,
+				true,
+				attribute => (attribute.Value == null ? default(T) : Convert.ChangeType(attribute.Value, typeof(T))));
+		}
+
+		/// <summary>
+		/// Set value to the property from DefaultValue attribute
+		/// or do nothing if the attribute is not defined.
+		/// </summary>
+		/// <param name="thisObject">Object that is investigated.</param>
+		/// <param name="propertyName">Property name, could be omitted.</param>
+		/// <returns>TRUE if property value is set.</returns>
 		public static bool SetDefaultValue(this object thisObject, [CallerMemberName]string propertyName = null)
 		{
 			return SetDefaultValueBase(
@@ -105,7 +121,7 @@ namespace Ikc5.TypeLibrary
 				thisObject,
 				propertyName,
 				false,
-				attribute => (attribute == null ? defaultValue : (attribute.Value == null ? null : Convert.ChangeType(attribute.Value, typeof(T)))));
+				attribute => (attribute == null ? defaultValue : (attribute.Value == null ? default(T) : Convert.ChangeType(attribute.Value, typeof(T)))));
 		}
 
 		/// <summary>

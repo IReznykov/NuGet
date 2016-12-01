@@ -187,6 +187,36 @@ namespace Ikc5.TypeLibrary.Tests
 		}
 
 		[Fact]
+		public void SetDefaultValue_ShouldAssign_DeltaToDefault()
+		{
+			var testObject = new DefaultsObject4();
+			testObject.Should().NotBeNull();
+			testObject.Delta.Should().Be(0);
+
+			bool? result = null;
+			var exception = Record.Exception(() => result = testObject.SetDefaultValue<short>(nameof(DefaultsObject4.Delta)));
+
+			exception.Should().BeNull();
+			result.Should().BeTrue();
+			testObject.Delta.Should().Be(400);
+		}
+
+		[Fact]
+		public void SetDefaultValue_ShouldKeep_DeltaWithoutDefault()
+		{
+			var testObject = new DefaultsObject4();
+			testObject.Should().NotBeNull();
+			testObject.DeltaWithoutDefault.Should().Be(50);
+
+			bool? result = null;
+			var exception = Record.Exception(() => result = testObject.SetDefaultValue<short>(nameof(DefaultsObject4.DeltaWithoutDefault)));
+
+			exception.Should().BeNull();
+			result.Should().BeFalse();
+			testObject.DeltaWithoutDefault.Should().Be(50);
+		}
+
+		[Fact]
 		public void CopyValuesFrom_ShouldCopy_PropertyValues()
 		{
 			PropertyObject1 testObject1 = null;
@@ -421,6 +451,12 @@ namespace Ikc5.TypeLibrary.Tests
 			public int PrivateCount { get; private set; }
 
 			public int CountWithoutDefault { get; set; } = 25;
+
+			[DefaultValue(400)]
+			public short Delta { get; set; }
+
+			public short DeltaWithoutDefault { get; set; } = 50;
+
 		}
 
 		private class PropertyObject1

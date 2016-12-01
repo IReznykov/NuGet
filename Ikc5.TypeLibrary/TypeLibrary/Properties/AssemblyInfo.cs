@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Ikc5.TypeLibrary")]
-[assembly: AssemblyDescription("Library contains type extensions, useful methods that manipulate DefaultValue attributes, the service that provides lite object with public properties from parent object.")]
+[assembly: AssemblyDescription("Library contains type extensions, useful methods that manipulate DefaultValue attributes, the service that provides lite object with public properties from parent object, logger interfaces and log extensions.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Illya Reznykov")]
 [assembly: AssemblyProduct("Ikc5.TypeLibrary")]
@@ -29,8 +29,8 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.0.6")]
-[assembly: AssemblyFileVersion("1.0.0.6")]
+[assembly: AssemblyVersion("1.0.0.8")]
+[assembly: AssemblyFileVersion("1.0.0.8")]
 
 // Test library
 [assembly: InternalsVisibleTo("TypeLibrary.Tests")]
