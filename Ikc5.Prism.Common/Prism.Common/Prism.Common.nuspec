@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>IReznykov</owners>
+    <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
+    <projectUrl>https://github.com/IReznykov/NuGet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial release. Contains logging extensions.</releaseNotes>
+    <copyright>Copyright ©2016 Illya Reznykov</copyright>
+    <tags>prism logging logger</tags>
+    <dependencies>
+      <dependency id="Ikc5.TypeLibrary" version="1.0.0.8" />
+      <dependency id="Prism.Core" version="6.2.0" />
+    </dependencies>
+  </metadata>
+</package>
