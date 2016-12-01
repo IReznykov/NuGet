@@ -7,7 +7,7 @@
     <authors>$author$</authors>
     <owners>IReznykov</owners>
     <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
-    <projectUrl>https://github.com/IReznykov/NuGet</projectUrl>
+    <projectUrl>https://github.com/IReznykov/NuGet/tree/master/Ikc5.Prism.Common</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Initial release. Contains logging extensions.</releaseNotes>
