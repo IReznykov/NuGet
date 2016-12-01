@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>IReznykov</owners>
+    <licenseUrl>http://opensource.org/licenses/MS-PL</licenseUrl>
+    <projectUrl>https://github.com/IReznykov/NuGet/tree/master/Ikc5.Math.CellularAutomata</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial release of the package. Contains automaton, cell, life preset classes.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Cellular automata Conway's life game</tags>
+    <dependencies>
+      <dependency id="Ikc5.TypeLibrary" version="1.0.0.8" />
+    </dependencies>
+  </metadata>
+</package>

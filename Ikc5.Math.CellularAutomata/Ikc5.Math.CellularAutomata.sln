@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".NuGet", ".NuGet", "{A741BC74-08CB-4E06-9AF5-5CCC297216CD}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Math.CellularAutomata", "Math.CellularAutomata\Math.CellularAutomata.csproj", "{697FF540-4449-44F6-B410-10B47B33FE8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Math.CellularAutomata.Tests", "Math.CellularAutomata.Tests\Math.CellularAutomata.Tests.csproj", "{E85BCE80-C986-4F26-967A-9E9195A81947}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{697FF540-4449-44F6-B410-10B47B33FE8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{697FF540-4449-44F6-B410-10B47B33FE8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{697FF540-4449-44F6-B410-10B47B33FE8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{697FF540-4449-44F6-B410-10B47B33FE8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E85BCE80-C986-4F26-967A-9E9195A81947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E85BCE80-C986-4F26-967A-9E9195A81947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E85BCE80-C986-4F26-967A-9E9195A81947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E85BCE80-C986-4F26-967A-9E9195A81947}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://ireznykov.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Math.CellularAutomata\\Math.CellularAutomata.csproj
+		SccProjectName1 = Math.CellularAutomata
+		SccLocalPath1 = Math.CellularAutomata
+		SccProjectUniqueName2 = Math.CellularAutomata.Tests\\Math.CellularAutomata.Tests.csproj
+		SccProjectName2 = Math.CellularAutomata.Tests
+		SccLocalPath2 = Math.CellularAutomata.Tests
+	EndGlobalSection
+EndGlobal
