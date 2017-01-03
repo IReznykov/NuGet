@@ -50,6 +50,7 @@
     <Compile Include="ILiteObjectService.cs" />
     <Compile Include="LiteObjectBase.cs" />
     <Compile Include="LiteObjectService.cs" />
+    <Compile Include="Logging\EmptyLogger.cs" />
     <Compile Include="Logging\ILogger.cs" />
     <Compile Include="Logging\Priority.cs" />
     <Compile Include="Logging\Category.cs" />
