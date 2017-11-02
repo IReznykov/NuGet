@@ -83,7 +83,7 @@ namespace Ikc5.TypeLibrary.Logging
 			}
 			else
 			{
-				logger.Log(message, category, priority);
+				logger.Log($"Start {propertyName}: {message}", category, priority);
 			}
 			return logger;
 		}
@@ -111,7 +111,7 @@ namespace Ikc5.TypeLibrary.Logging
 			}
 			else
 			{
-				logger.Log(message, category, priority);
+				logger.Log($"End {propertyName}: {message}", category, priority);
 			}
 			return logger;
 		}
